@@ -21,7 +21,6 @@ function main() {
         var saveBtnEl = document.createElement('button');
         saveBtnEl.setAttribute('class', 'col-sm-1 saveBtn');
     
-        console.log(`index number: ` + hour)
         formatMilitaryTime(hour)
     
         timeRowEl.append(hourEl);
@@ -35,23 +34,36 @@ function main() {
 function formatMilitaryTime(currentIndex) {
     var suffix = '';
     var hour = moment().hour() + currentIndex;
-    
-    console.log(hour)
 
-    if (hour > 24) {
-        hour -= 24;
-        suffix = ' AM';
-    } else if (hour > 12) {
-        suffix = ' PM';
-        hour -= 12;
-    } else if (hour > 0) {
-        suffix = ' AM'
+    if (hour > 23) {
+        if (hour == 24) {
+            hour = 12;
+            suffix = ' AM';
+        } else {
+            hour -= 24;
+            suffix = ' AM';
+        }
+    } else if (hour > 11) {
+        if (hour == 12) {
+            hour = 12;
+            suffix = ' PM';
+        } else {
+            hour -= 12;
+            suffix = ' PM';
+        }
+    } else if (hour < 1) {
+        if (hour == 0) {
+            hour = 12;
+            suffix = ' AM';
+        } else {
+            hour += 12;
+            suffix = ' PM';
+        }
     } else {
-
+        suffix = ' AM';
     }
     hour = hour + suffix;
 
-    console.log(hour.toString())
     return hour
 }
 
