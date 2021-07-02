@@ -13,20 +13,29 @@ function main() {
         //div row that holds all the stuffs
         var timeRowEl = document.createElement('div');
         timeRowEl.setAttribute('class', 'row time-block');
-    
+
         var hourEl = document.createElement('div');
         hourEl.setAttribute('class', 'col-sm-1 hour');
-        var timeEl = document.createElement('textarea');
-        timeEl.setAttribute('class', 'col-sm-10 description');
+        var DescriptionEl = document.createElement('textarea');
         var saveBtnEl = document.createElement('button');
         saveBtnEl.setAttribute('class', 'col-sm-1 saveBtn');
-    
-        formatMilitaryTime(hour)
-    
+
+        var timeAtIndex = formatMilitaryTime(hour);
+        hourEl.textContent = timeAtIndex;
+
+        if (hour < 0) {
+            DescriptionEl.setAttribute('class', 'col-sm-10 description past');
+        } else if (hour == 0) {
+            DescriptionEl.setAttribute('class', 'col-sm-10 description present');
+        } else {
+            DescriptionEl.setAttribute('class', 'col-sm-10 description future');
+        }
+
+
         timeRowEl.append(hourEl);
-        timeRowEl.append(timeEl);
+        timeRowEl.append(DescriptionEl);
         timeRowEl.append(saveBtnEl);
-    
+
         containerEl.append(timeRowEl);
     }
 }
