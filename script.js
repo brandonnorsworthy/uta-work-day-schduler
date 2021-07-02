@@ -32,6 +32,17 @@ function main() {
         var saveIconEL = document.createElement('img')
         saveIconEL.setAttribute('src', './saveiconxs.png')
 
+        var tempArr = JSON.parse(localStorage.getItem('events'));
+        if(tempArr != null) {
+            console.log(tempArr, hourEl.textContent)
+            for (let index = 0; index < tempArr.length; index++) {
+                if ((hourEl.textContent == tempArr[index].eventTime) && (moment().dayOfYear() == tempArr[index].dayOfYear)) {
+                    console.log('exsists');
+                    DescriptionEl.textContent = tempArr[index].eventDescription;
+                }
+            }
+        }
+
         saveBtnEl.append(saveIconEL);
         timeRowEl.append(hourEl);
         timeRowEl.append(DescriptionEl);
@@ -77,14 +88,38 @@ function formatMilitaryTime(hour) {
 }
 
 function saveEventData(event) {
-    //get time in row
-    if (event.target.localName === "img"){
+    if (event.target.localName === "img"){ //if they click the icon in the button retarget it to the button its in
         event.target = event.target.parentElement;
     }
-        console.log(event.target.parentElement.firstChild.textContent)
-
-        //save at event{<month>-<day>-<time>}
-
+    if (event.target.type === "submit") { //only if button was clicked
+        if (event.target.parentElement.children[1].value != ""){ //only if description has something in it
+            tempArr = []; //initialize array
+            if (localStorage.getItem('events') === null) { //if memory is empty make new array
+                //make a new array
+                tempArr = [
+                    {
+                        dayOfYear: moment().dayOfYear(),
+                        eventTime: event.target.parentElement.firstChild.textContent,
+                        eventDescription: event.target.parentElement.children[1].value,
+                    }
+                ];
+            } else {
+                //trying to add to current memeory
+                tempArr = JSON.parse(localStorage.getItem('events'));
+                console.log(tempArr)
+                tempArr.push({
+                    dayOfYear: moment().dayOfYear(),
+                    eventTime: event.target.parentElement.firstChild.textContent,
+                    eventDescription: event.target.parentElement.children[1].textContent,
+                })
+            }
+            localStorage.setItem('events', JSON.stringify(tempArr)) //convert array of objects to json
+            console.log(`saved soemthing`)
+            //save at event{<month>-<day>-<time>}
+        } else {
+            console.log(`did not try to save`)
+        }
+    }
     return;
 }
 
