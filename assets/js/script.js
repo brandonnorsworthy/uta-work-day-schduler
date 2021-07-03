@@ -106,20 +106,13 @@ function saveEventData(event) {
                 //trying to add to current memeory
                 tempArr = JSON.parse(localStorage.getItem('events'));
                 if (event.target.parentElement.children[1].id == 'saved-item') {
-                    console.log("noticed saved item attempting to delete the previous instance");
                     for (let index = 0; index < tempArr.length; index++) {
                         if ((tempArr[index].dayOfYear === moment().dayOfYear()) && (tempArr[index].eventTime === event.target.parentElement.firstChild.textContent)){
-                            console.log("found the match at index:", index);
-
-                            console.log(tempArr, "trying to delete index", index)
                             tempArrSliceFront = tempArr.slice(0, index);
-                            console.log("slice at front: ", tempArrSliceFront)
                             tempArrSliceBack = tempArr.slice(index + 1, tempArr.length);
-                            console.log("slice at back: ", tempArrSliceBack)
                             tempArr = [];
                             tempArr = tempArr.concat(tempArrSliceFront);
                             tempArr = tempArr.concat(tempArrSliceBack);
-                            console.log(tempArr)
                         }
                     }
                 }
