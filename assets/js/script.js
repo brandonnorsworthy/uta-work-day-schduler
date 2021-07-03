@@ -112,12 +112,9 @@ function saveEventData(event) {
                 tempArr.push(tempObject)
             }
             localStorage.setItem('events', JSON.stringify(tempArr)) //convert array of objects to json
-            console.log(`saved: ` + JSON.stringify(tempArr))
-            //save at event{<month>-<day>-<time>}
-        } else {
-            console.log(`did not try to save`)
         }
     }
+
     return;
 }
 
