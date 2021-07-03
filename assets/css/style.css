@@ -41,6 +41,8 @@ textarea {
 }
 
 .hour {
+  padding-right: 15px;
+  padding-top: 15px;
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
@@ -48,17 +50,14 @@ textarea {
 
 .past {
   background-color: #d3d3d3;
-  color: var(--fontColor);
 }
 
 .present {
   background-color: #ff6961;
-  color: var(--fontColor);
 }
 
 .future {
   background-color: #77dd77;
-  color: var(--fontColor);
 }
 
 .saveBtn {
