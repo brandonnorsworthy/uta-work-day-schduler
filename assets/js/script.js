@@ -4,10 +4,10 @@ var containerEl = $('.container');
 
 function main() {
     currentDayEl.text(moment().format("dddd, MMMM Do"));
-    var maxHours = 12; //8 hours displayed max 3 previous hours 1 present and 4 future
-    var offsetHours = -3
+    var maxHours = 8; //8 hours displayed max 3 previous hours 1 present and 4 future
+    var offsetHours = 9
     //create my times
-    for (var hour = offsetHours; hour < maxHours + offsetHours; hour++){
+    for (var hour = offsetHours; hour <= maxHours + offsetHours; hour++){
         //div row that holds all the stuffs
         var timeRowEl = document.createElement('div');
         timeRowEl.setAttribute('class', 'row time-block');
@@ -18,12 +18,12 @@ function main() {
         var saveBtnEl = document.createElement('button');
         saveBtnEl.setAttribute('class', 'col-sm-1 saveBtn');
 
-        var timeAtIndex = formatMilitaryTime(moment().hour() + hour);
+        var timeAtIndex = formatMilitaryTime(hour);
         hourEl.textContent = timeAtIndex;
 
-        if (hour < 0) {
+        if (hour < moment().hour()) {
             DescriptionEl.setAttribute('class', 'col-sm-10 description past');
-        } else if (hour == 0) {
+        } else if (hour == moment().hour()) {
             DescriptionEl.setAttribute('class', 'col-sm-10 description present');
         } else {
             DescriptionEl.setAttribute('class', 'col-sm-10 description future');
