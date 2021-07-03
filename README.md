@@ -7,7 +7,7 @@ Calendar application that allows a user to save events for each hour of the day.
 
 ### Demo
 
-![desktop demo](assets/images/desktop_demo.gif)]
+![desktop demo](assets/images/desktop_demo.gif)  
 **the white flashes are when the page gets refreshed**
 
 ### Functionality
