@@ -30,14 +30,12 @@ function main() {
         }
 
         var saveIconEL = document.createElement('img')
-        saveIconEL.setAttribute('src', './saveiconxs.png')
+        saveIconEL.setAttribute('src', './assets/images/saveicon.png')
 
         var tempArr = JSON.parse(localStorage.getItem('events'));
         if(tempArr != null) {
-            console.log(tempArr, hourEl.textContent)
             for (let index = 0; index < tempArr.length; index++) {
                 if ((hourEl.textContent == tempArr[index].eventTime) && (moment().dayOfYear() == tempArr[index].dayOfYear)) {
-                    console.log('exsists');
                     DescriptionEl.textContent = tempArr[index].eventDescription;
                 }
             }
