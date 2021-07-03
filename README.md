@@ -11,7 +11,7 @@ Calendar application that allows a user to save events for each hour of the day.
 **the white flashes are when the page gets refreshed**
 
 ### Functionality
-* Generates the past 3 hours as well as 7 hours into the future to plan out the day
+* Generates the normal 9 to 5 business hours of the day to plan out
 * dynamically creates ```<div class="row">``` as well as ```<div class="columns">```
 * Styled using the [Bootstrap Framework](https://getbootstrap.com/)
 * Stores users events in the DOMs local storage object so it can be loaded on page load.
