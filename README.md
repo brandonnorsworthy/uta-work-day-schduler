@@ -10,6 +10,10 @@ Calendar application that allows a user to save events for each hour of the day.
 ![desktop demo](assets/images/desktop_demo.gif)  
 **the white flashes are when the page gets refreshed**
 
+## Homework Assignment Given Design
+
+![Given Design](./assets/images/given.gif)
+
 ### Functionality
 * Generates the normal 9 to 5 business hours of the day to plan out
 * dynamically creates ```<div class="row">``` as well as ```<div class="columns">```
